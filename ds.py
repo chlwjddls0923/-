@@ -12,6 +12,7 @@ class ArrayList:
         Append value to the end.
         """
         # TODO: implement
+        self._data.append(value)
         pass
 
     def insert(self, index: int, value: Any) -> None:
@@ -20,7 +21,10 @@ class ArrayList:
         Raise IndexError if index is out of range [0, size].
         """
         # TODO: implement
-        pass
+        if 0 <= index <= len(self._data):
+            self._data.insert(index, value)
+        else:
+            raise IndexError("Index out of range")
 
     def remove(self, index: int) -> Any:
         """# Time: O(n), Space: O(1)
@@ -28,19 +32,25 @@ class ArrayList:
         Raise IndexError if index is out of range.
         """
         # TODO: implement
-        pass
+        if 0 <= index < len(self._data):
+            return self._data.pop(index)
+        else:
+            raise IndexError("Index out of range")        
 
     def get(self, index: int) -> Any:
         """# Time: O(1), Space: O(1)
         Return element at index. Raise IndexError if out of range.
         """
         # TODO: implement
-        pass
+        if 0 <= index < len(self._data):
+            return self._data[index]
+        else:
+            raise IndexError("Index out of range")
 
     def size(self) -> int:
         """# Time: O(1), Space: O(1)"""
         # TODO: implement
-        pass
+        return len(self._data)
 
     def __len__(self) -> int:
         return self.size()
