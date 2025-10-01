@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import Any, Optional
 
-class ArrayList:
+class ArrayList: 
 
     def __init__(self):
         self._data: list[Any] = []
