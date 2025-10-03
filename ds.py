@@ -13,7 +13,6 @@ class ArrayList:
         """
         # TODO: implement
         self._data.append(value)
-        pass
 
     def insert(self, index: int, value: Any) -> None:
         """# Time: O(n), Space: O(1)
@@ -118,7 +117,7 @@ class LinkedList:
         """# Time: O(n), Space: O(1)
         Remove and return element at index. Raise IndexError if out of range.
         """
-        if not ( 0 <= index < self._size):
+        if not (0 <= index < self._size):
             raise IndexError("Index out of range")
         
         if index == 0:
