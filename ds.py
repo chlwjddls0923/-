@@ -101,8 +101,19 @@ class LinkedList:
         """# Time: O(n), Space: O(1)
         Return element at index. Raise IndexError if out of range.
         """
-        # TODO: implement
-        pass
+        if not 0 <= index < self._size:
+            raise IndexError("Index out of range")
+
+        current = self._head
+        for _ in range(index):
+            if current is None:
+                raise IndexError("Index out of range")
+            current = current.next
+
+        if current is None:
+            raise IndexError("Index out of range")
+
+        return current.value
 
     def size(self) -> int:
         """# Time: O(1), Space: O(1)"""
