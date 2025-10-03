@@ -73,52 +73,74 @@ class LinkedList:
         """# Time: O(n), Space: O(1)
         Append value to the end.
         """
-        # TODO: implement
-        pass
+        new_node = _Node(value)
+        if self._head is None:
+            self._head = new_node
+        else:
+            curr = self._head
+            while curr.next is not None:
+                curr = curr.next
+            curr.next = new_node
+        self._size += 1
 
     def _node_at(self, index: int) -> _Node:
         """# Time: O(n), Space: O(1)
         Return node at index (0-based). Raise IndexError if out of range.
         """
-        # TODO: implement
-        pass
+        if 0 <= index < self._size:
+            curr = self._head
+            for _ in range(index):
+                curr = curr.next
+            return curr
+        else:
+            raise IndexError("Index out of range")
 
     def insert(self, index: int, value: Any) -> None:
         """# Time: O(n), Space: O(1)
         Insert value at index (0..size). Raise IndexError if out of range.
         """
-        # TODO: implement
-        pass
+        if not (0 <= index <= self._size):
+            raise IndexError("Index out of range")
+        
+        new_node = _Node(value)
+
+        if index == 0:
+            new_node.next = self._head
+            self._head = new_node
+        else:
+            prev = self._node_at(index - 1)
+            new_node.next = prev.next
+            prev.next = new_node
+
+        self._size += 1
 
     def remove(self, index: int) -> Any:
         """# Time: O(n), Space: O(1)
         Remove and return element at index. Raise IndexError if out of range.
         """
-        # TODO: implement
-        pass
+        if not ( 0 <= index < self._size):
+            raise IndexError("Index out of range")
+        
+        if index == 0:
+            removed = self._head
+            self._head = self._head.next
+        else:
+            prev = self._node_at(index - 1)
+            removed = prev.next
+            prev.next = removed.next
+
+        self._size -= 1
+        return removed.value
 
     def get(self, index: int) -> Any:
         """# Time: O(n), Space: O(1)
         Return element at index. Raise IndexError if out of range.
         """
-        if not 0 <= index < self._size:
-            raise IndexError("Index out of range")
-
-        current = self._head
-        for _ in range(index):
-            if current is None:
-                raise IndexError("Index out of range")
-            current = current.next
-
-        if current is None:
-            raise IndexError("Index out of range")
-
-        return current.value
+        return self._node_at(index).value
 
     def size(self) -> int:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        return self._size
 
     def __len__(self) -> int:
         return self.size()
@@ -127,36 +149,35 @@ class LinkedList:
 class Stack:
 
     def __init__(self):
-        self._arr = ArrayList()
+        self._data: list[Any] = []
 
     def push(self, value: Any) -> None:
         """# Time: O(1) amortized, Space: O(1)"""
-        # TODO: implement
-        pass
+        self._data.append(value)
 
     def pop(self) -> Any:
         """# Time: O(1) amortized (ArrayList remove at end), Space: O(1)
         Raise IndexError if empty.
         """
-        # TODO: implement
-        pass
+        if self.is_empty():
+            raise IndexError("Pop from empty stack")
+        return self._data.pop()
 
     def peek(self) -> Any:
         """# Time: O(1), Space: O(1)
         Raise IndexError if empty.
         """
-        # TODO: implement
-        pass
+        if self.is_empty():
+            raise IndexError("Peek from empty stack")
+        return self._data[-1]
 
     def is_empty(self) -> bool:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        return len(self._data) == 0
 
     def size(self) -> int:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        return len(self._data)
 
 
 class Queue:
