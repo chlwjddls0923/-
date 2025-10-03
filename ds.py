@@ -189,29 +189,40 @@ class Queue:
 
     def enqueue(self, value: Any) -> None:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        new_node = _Node(value)
+        if self._tail is None:
+            self._head = self._tail = new_node
+        else:
+            self._tail.next = new_node
+            self._tail = new_node
+        self._size += 1
 
     def dequeue(self) -> Any:
         """# Time: O(1), Space: O(1)
         Remove and return front element. Raise IndexError if empty.
         """
-        # TODO: implement
-        pass
+        if self.is_empty():
+            raise IndexError("Dequeue from empty queue")
+        removed = self._head
+        self._head = self._head.next
+        if self._head is None:
+            self._tail = None
+        self._size -= 1
+        return removed.value     
+    
 
     def peek(self) -> Any:
         """# Time: O(1), Space: O(1)
         Return front element without removing. Raise IndexError if empty.
         """
-        # TODO: implement
-        pass
+        if self.is_empty():
+            raise IndexError("Peek from empty queue")
+        return self._head.value
 
     def is_empty(self) -> bool:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        return self._size == 0
 
     def size(self) -> int:
         """# Time: O(1), Space: O(1)"""
-        # TODO: implement
-        pass
+        return self._size
