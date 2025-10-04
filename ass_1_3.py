@@ -34,4 +34,6 @@ if __name__ == "__main__":
 2) 2-Stack 방식과의 성능 차이
   - 2-Stack: O(L) - 모든 연산이 배열 끝에서만 발생 (push/pop은 O(1))
   - Cursor: O(L²) - splice/insert로 중간 작업 시 매번 O(L) 소요
+
+※ 여기서 L은 입력된 키(문자 + 특수키)의 전체 개수를 의미한다.
 '''
